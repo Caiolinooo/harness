@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "title": "Todo CLI",
+  "summary": "A minimal offline TypeScript CLI for personal todos.",
+  "persona": "Developer who lives in the terminal",
+  "goals": ["Add todos", "List todos", "Mark done"],
+  "nonGoals": ["Cloud sync", "Mobile app"],
+  "scope": {
+    "inScope": ["CLI commands", "Local JSON store", "Unit tests"],
+    "outOfScope": ["Auth", "Multi-user"],
+    "assumptions": ["Node 22 available"],
+    "openQuestions": []
+  },
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "title": "Add todo",
+      "description": "User can add a todo with text",
+      "priority": "must",
+      "acceptanceCriteria": ["Command `todo add <text>` persists item"]
+    },
+    {
+      "id": "REQ-2",
+      "title": "List todos",
+      "description": "User can list open and done todos",
+      "priority": "must",
+      "acceptanceCriteria": ["Command `todo list` prints items"]
+    }
+  ],
+  "constraints": ["Offline only", "No network calls"],
+  "successMetrics": ["All vitest tests pass"]
+}

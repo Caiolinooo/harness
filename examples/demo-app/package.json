@@ -1,0 +1,9 @@
+{
+  "name": "demo-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"no tests yet\"",
+    "typecheck": "echo \"ok\""
+  }
+}

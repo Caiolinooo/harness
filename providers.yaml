@@ -1,0 +1,82 @@
+# Role → model routing. Swap models without changing pipeline code.
+defaults:
+  temperature: 0.2
+  maxTokens: 8192
+  timeoutMs: 300000
+
+pricing:
+  # USD per 1M tokens (approximate; override as needed)
+  openrouter/moonshotai/kimi-k3:
+    input: 3.0
+    output: 15.0
+  openrouter/anthropic/claude-fable-5:
+    input: 5.0
+    output: 25.0
+  openrouter/openai/gpt-5.6-sol:
+    input: 2.5
+    output: 15.0
+  openrouter/openai/gpt-5.3-codex:
+    input: 1.5
+    output: 6.0
+  openrouter/anthropic/claude-sonnet-4.6:
+    input: 3.0
+    output: 15.0
+  openrouter/anthropic/claude-opus-4.6:
+    input: 15.0
+    output: 75.0
+  openrouter/z-ai/glm-5.2:
+    input: 0.6
+    output: 2.2
+  openrouter/minimax/minimax-m2.5:
+    input: 0.3
+    output: 1.2
+
+roles:
+  orchestrator:
+    provider: openrouter
+    model: moonshotai/kimi-k3
+    reasoning: high
+  prd_writer:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+    reasoning: high
+  tech_docs_db:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+  tech_docs_frontend:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+  tech_docs_backend:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+  tech_docs_security:
+    provider: openrouter
+    model: openai/gpt-5.6-sol
+  spec_writer:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+    reasoning: high
+  spec_validator_a:
+    provider: openrouter
+    model: openai/gpt-5.3-codex
+    reasoning: high
+  spec_validator_b:
+    provider: openrouter
+    model: openai/gpt-5.3-codex
+    reasoning: extra-high
+  sprint_planner:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+  sprint_fixer:
+    provider: openrouter
+    model: anthropic/claude-fable-5
+  developer:
+    provider: openrouter
+    model: moonshotai/kimi-k3
+    reasoning: high
+  dev_validator:
+    provider: openrouter
+    model: moonshotai/kimi-k3
+  cheap_worker:
+    provider: openrouter
+    model: z-ai/glm-5.2

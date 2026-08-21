@@ -1,0 +1,25 @@
+{
+  "name": "the-last-harness",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The Last Harness — production-grade multi-model agent harness",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "build": "pnpm -r --filter=./packages/* build && pnpm -r --filter=./apps/* build && pnpm -r --filter=./pipelines/* build && pnpm -r --filter=./verticals/* build",
+    "dev:web": "pnpm --filter @harness/web dev",
+    "harness": "pnpm --filter @harness/cli start",
+    "doctor": "pnpm --filter @harness/cli start doctor",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r exec rimraf dist .next *.tsbuildinfo"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.2",
+    "tsx": "^4.19.3",
+    "vitest": "^3.0.9"
+  }
+}
